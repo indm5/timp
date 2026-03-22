@@ -1,0 +1,6 @@
+.qtcreator/
+build/
+echoServer.pro
+mytcpserver.cpp
+*.o
+*.user
