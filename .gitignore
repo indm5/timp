@@ -1,0 +1,28 @@
+# Qt Creator
+*.pro.user
+*.user
+*.user.*
+*.cflags
+*.cxxflags
+Makefile
+Makefile.*
+moc_*
+ui_*
+*.o
+*.so
+*.exe
+
+# Папки сборки
+debug/
+release/
+build/
+build-*/
+*.build
+.qtcreator/
+
+# Mac
+.DS_Store
+*.dSYM
+
+# Docker
+Dockerfile
