@@ -1,3 +1,4 @@
+
 #include "mytcpserver.h"
 #include <QDebug>
 #include <QCoreApplication>
@@ -78,13 +79,13 @@ QString MyTcpServer::calculateDegrees(const QString &incidenceMatrix)
     int numVertices = matrix.size();
     int numEdges = matrix[0].size();
 
-    result += "=====================================\n";
+
     result += "Анализ матрицы инцидентности:\n";
     result += QString("Количество вершин: %1\n").arg(numVertices);
     result += QString("Количество ребер: %1\n").arg(numEdges);
-    result += "=====================================\n\n";
 
-    // Проверка корректности матрицы
+
+
     for(int i = 0; i < numVertices; i++) {
         if(matrix[i].size() != numEdges) {
             return QString("Ошибка: строка %1 имеет %2 элементов, ожидалось %3\n")
@@ -93,7 +94,7 @@ QString MyTcpServer::calculateDegrees(const QString &incidenceMatrix)
     }
 
     result += "Степени вершин:\n";
-    result += "-------------------------------------\n";
+
 
     QList<int> degrees;
     for(int i = 0; i < numVertices; i++) {
@@ -107,12 +108,12 @@ QString MyTcpServer::calculateDegrees(const QString &incidenceMatrix)
         result += QString("Вершина %1: степень = %2\n").arg(i+1).arg(degree);
     }
 
-    result += "-------------------------------------\n";
 
-    // Статистика
+
+
     result += "\nСтатистика:\n";
     if(!degrees.isEmpty()) {
-        // Находим максимум и минимум
+
         int maxDeg = degrees[0];
         int minDeg = degrees[0];
         int sumDeg = 0;
@@ -135,7 +136,7 @@ QString MyTcpServer::calculateDegrees(const QString &incidenceMatrix)
         }
     }
 
-    result += "=====================================\n";
+
 
     return result;
 }
@@ -150,7 +151,7 @@ void MyTcpServer::slotServerRead()
         qDebug() << "Получены данные от клиента:";
         qDebug() << receivedData;
 
-        // Проверка на команду выхода
+
         if(receivedData.trimmed().toLower() == "exit" ||
             receivedData.trimmed().toLower() == "quit") {
             mTcpSocket->write("До свидания!\n");
@@ -158,10 +159,9 @@ void MyTcpServer::slotServerRead()
             break;
         }
 
-        // Вычисляем степени вершин
         QString result = calculateDegrees(receivedData);
 
-        // Отправляем результат клиенту
+
         mTcpSocket->write(result.toUtf8());
         mTcpSocket->write("\nДля завершения работы введите 'exit'\n");
         mTcpSocket->write("Для нового расчета отправьте новую матрицу:\n");
