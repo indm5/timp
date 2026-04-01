@@ -3,13 +3,11 @@
 SingletonClient*         SingletonClient::p_instance = nullptr;
 SingletonClientDestroyer SingletonClient::destroyer;
 
-// Деструктор Destroyer — здесь SingletonClient уже полностью объявлен
 SingletonClientDestroyer::~SingletonClientDestroyer()
 {
     delete p_instance;
 }
 
-// Деструктор клиента — корректно закрываем сокет
 SingletonClient::~SingletonClient()
 {
     if (mTcpSocket)
@@ -17,17 +15,15 @@ SingletonClient::~SingletonClient()
         if (mTcpSocket->state() != QAbstractSocket::UnconnectedState)
         {
             mTcpSocket->disconnectFromHost();
-            // Даём время на graceful shutdown (waitForDisconnected)
             if (mTcpSocket->state() != QAbstractSocket::UnconnectedState)
                 mTcpSocket->waitForDisconnected(3000);
         }
-        // Не вызываем delete — mTcpSocket имеет parent=this, Qt удалит сам
     }
 }
 
 SingletonClient::SingletonClient(QObject* parent) : QObject(parent)
 {
-    mTcpSocket = new QTcpSocket(this);   // автоудаление Qt
+    mTcpSocket = new QTcpSocket(this);
 
     connect(mTcpSocket, &QTcpSocket::readyRead,
             this,        &SingletonClient::slotServerRead);
