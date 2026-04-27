@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Графы - задачи (Клиент-Сервер)</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab1">
+       <attribute name="title">
+        <string>Задание 1: Двудольный граф</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label1">
+          <property name="text">
+           <string>📊 Введите матрицу смежности (0/1, разделяйте пробелами, строки через точку с запятой):</string>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="inputGraph1">
+          <property name="placeholderText">
+           <string>Пример:
+0 1 0;1 0 1;0 1 0</string>
+          </property>
+          <property name="maximumHeight">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSolve1">
+          <property name="text">
+           <string>🔍 Найти разбиение на доли</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton { background-color: #4CAF50; color: white; font-weight: bold; padding: 8px; border-radius: 5px; }
+QPushButton:hover { background-color: #45a049; }</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelResult1">
+          <property name="text">
+           <string>📋 Результат:</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="output1">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTextEdit { background-color: #f8f9fa; font-family: monospace; }</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab2">
+       <attribute name="title">
+        <string>Задание 2: Степени вершин</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="label2">
+          <property name="text">
+           <string>📊 Введите матрицу инцидентности (строки - вершины, столбцы - ребра, 0/1):</string>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="inputGraph2">
+          <property name="placeholderText">
+           <string>Пример:
+1 1 0;1 0 1;0 1 1</string>
+          </property>
+          <property name="maximumHeight">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSolve2">
+          <property name="text">
+           <string>📊 Найти степени вершин</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton { background-color: #2196F3; color: white; font-weight: bold; padding: 8px; border-radius: 5px; }
+QPushButton:hover { background-color: #0b7dda; }</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelResult2">
+          <property name="text">
+           <string>📋 Результат:</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="output2">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTextEdit { background-color: #f8f9fa; font-family: monospace; }</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab3">
+       <attribute name="title">
+        <string>Задание 3: Релаксация ребра</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="label3">
+          <property name="text">
+           <string>📊 Введите расстояние до вершин (массив, пробелы):</string>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="distInput">
+          <property name="placeholderText">
+           <string>Пример: 0 5 100 100</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label3_2">
+          <property name="text">
+           <string>🔗 Ребро (u v) и вес w (через пробел):</string>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="edgeInput">
+          <property name="placeholderText">
+           <string>Пример: 1 3 10</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSolve3">
+          <property name="text">
+           <string>⚡ Выполнить релаксацию</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton { background-color: #ff9800; color: white; font-weight: bold; padding: 8px; border-radius: 5px; }
+QPushButton:hover { background-color: #e68900; }</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelResult3">
+          <property name="text">
+           <string>📋 Результат:</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="output3">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTextEdit { background-color: #f8f9fa; font-family: monospace; }</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="statusLabel">
+      <property name="text">
+       <string>✅ Статус: готов</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel { background-color: #e9ecef; padding: 5px; border-radius: 3px; }</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
