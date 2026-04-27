@@ -4,6 +4,6 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    MyTcpServer myserv;
+    MyTcpServer server;
     return a.exec();
 }

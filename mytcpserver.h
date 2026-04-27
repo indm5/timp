@@ -4,11 +4,11 @@
 #include <QObject>
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QMap>
+#include <QHostAddress>
 #include <QtNetwork>
 #include <QByteArray>
 #include <QDebug>
-#include <QList>
-#include <QString>
 
 class MyTcpServer : public QObject
 {
@@ -23,11 +23,8 @@ public slots:
     void slotServerRead();
 
 private:
-    QTcpServer * mTcpServer;
-    QTcpSocket * mTcpSocket;
-
-    QString calculateDegrees(const QString &incidenceMatrix);
-    QList<QList<int>> parseMatrix(const QString &matrixStr);
+    QTcpServer *mTcpServer;
+    QMap<int, QTcpSocket*> mSockets;
 };
 
 #endif // MYTCPSERVER_H

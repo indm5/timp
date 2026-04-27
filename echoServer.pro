@@ -1,19 +1,19 @@
 QT -= gui
 QT += network
 
-CONFIG += c++17 console
+CONFIG += c++11 console
 CONFIG -= app_bundle
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-# Исходные файлы сервера
 SOURCES += \
     main.cpp \
-    mytcpserver.cpp
+    mytcpserver.cpp \
+    server_functions.cpp
 
-# Заголовочные файлы сервера
 HEADERS += \
-    mytcpserver.h
+    mytcpserver.h \
+    server_functions.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
