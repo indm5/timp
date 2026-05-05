@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QJsonObject>
+#include "clientapi.h"
 
 namespace Ui {
 class AuthWidget;

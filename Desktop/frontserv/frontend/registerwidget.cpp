@@ -11,6 +11,8 @@ RegisterWidget::RegisterWidget(QWidget *parent)
     connect(ui->registerButton, &QPushButton::clicked, this, &RegisterWidget::onRegisterClicked);
     connect(ui->backButton, &QPushButton::clicked, this, &RegisterWidget::switchToLogin);
     connect(&ClientAPI::instance(), &ClientAPI::responseReceived, this, &RegisterWidget::onResponseReceived);
+
+     ClientAPI::instance().connectToServer("127.0.0.1", 12345);
 }
 
 void RegisterWidget::onRegisterClicked()

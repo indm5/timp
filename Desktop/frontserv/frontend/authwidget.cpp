@@ -1,6 +1,6 @@
 #include "authwidget.h"
 #include "ui_authwidget.h"
-#include "clientapi.h"
+
 
 AuthWidget::AuthWidget(QWidget *parent)
     : QWidget(parent)
