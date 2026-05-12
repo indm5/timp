@@ -27,11 +27,13 @@ private:
     void processRequest(QTcpSocket* client, const QByteArray &data);
     void sendResponse(QTcpSocket* client, const QJsonObject &response);
 
+    // Обработчики задач
     void handleLogin(QTcpSocket* client, const QJsonObject &request);
     void handleRegister(QTcpSocket* client, const QJsonObject &request);
-    void handleMatrixIdentity(QTcpSocket* client, const QJsonObject &request);
-    void handleRelaxationGraph(QTcpSocket* client, const QJsonObject &request);
-    void handleBipartiteGraph(QTcpSocket* client, const QJsonObject &request);
+    void handleTask1(QTcpSocket* client, const QJsonObject &request);
+    void handleTask2(QTcpSocket* client, const QJsonObject &request);
+    void handleTask3(QTcpSocket* client, const QJsonObject &request);
+    void handleTask4(QTcpSocket* client, const QJsonObject &request);
 };
 
 #endif

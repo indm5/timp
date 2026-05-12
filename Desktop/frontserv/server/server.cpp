@@ -68,12 +68,14 @@ void Server::processRequest(QTcpSocket* client, const QByteArray &data)
         handleLogin(client, request);
     } else if (action == "register") {
         handleRegister(client, request);
-    } else if (action == "matrix_identity") {
-        handleMatrixIdentity(client, request);
-    } else if (action == "relaxation_graph") {
-        handleRelaxationGraph(client, request);
-    } else if (action == "bipartite_graph") {
-        handleBipartiteGraph(client, request);
+    } else if (action == "task1") {
+        handleTask1(client, request);
+    } else if (action == "task2") {
+        handleTask2(client, request);
+    } else if (action == "task3") {
+        handleTask3(client, request);
+    } else if (action == "task4") {
+        handleTask4(client, request);
     }
 }
 
@@ -124,49 +126,47 @@ void Server::handleRegister(QTcpSocket* client, const QJsonObject &request)
     sendResponse(client, response);
 }
 
-void Server::handleMatrixIdentity(QTcpSocket* client, const QJsonObject &request)
+// ЗАДАЧА 1: Степени вершин по матрице инцидентности
+void Server::handleTask1(QTcpSocket* client, const QJsonObject &request)
 {
-    QJsonArray matrix = request["matrix"].toArray();
-    int size = request["size"].toInt();
+    QJsonArray incidenceMatrix = request["incidenceMatrix"].toArray();
+    int vertices = request["vertices"].toInt();
+    int edges = request["edges"].toInt();
 
-    bool result = GraphFunctions::isIdentityMatrix(matrix, size);
-
-    QJsonObject response;
-    response["action"] = "matrix_identity_result";
-    response["is_identity"] = result;
-    response["message"] = result ? "Matrix is identity matrix" : "Matrix is NOT identity matrix";
-
-    sendResponse(client, response);
+    QJsonObject result = GraphFunctions::task1_VertexDegrees(incidenceMatrix, vertices, edges);
+    sendResponse(client, result);
 }
 
-void Server::handleRelaxationGraph(QTcpSocket* client, const QJsonObject &request)
+// ЗАДАЧА 2: Релаксация ребра
+void Server::handleTask2(QTcpSocket* client, const QJsonObject &request)
+{
+    int currentDistance = request["currentDistance"].toInt();
+    int edgeWeight = request["edgeWeight"].toInt();
+
+    QJsonObject result = GraphFunctions::task2_RelaxEdge(currentDistance, edgeWeight);
+    sendResponse(client, result);
+}
+
+// ЗАДАЧА 3: Разбиение двудольного графа на доли
+void Server::handleTask3(QTcpSocket* client, const QJsonObject &request)
 {
     QJsonArray edges = request["edges"].toArray();
     int vertices = request["vertices"].toInt();
 
-    bool result = GraphFunctions::isRelaxationGraph(edges, vertices);
-
-    QJsonObject response;
-    response["action"] = "relaxation_graph_result";
-    response["is_relaxed"] = result;
-    response["message"] = result ? "Graph is relaxed (is a tree)" : "Graph is NOT relaxed";
-
-    sendResponse(client, response);
+    QJsonObject result = GraphFunctions::task3_BipartiteParts(edges, vertices);
+    sendResponse(client, result);
 }
 
-void Server::handleBipartiteGraph(QTcpSocket* client, const QJsonObject &request)
+// ЗАДАЧА 4: Существует ли путь между вершинами
+void Server::handleTask4(QTcpSocket* client, const QJsonObject &request)
 {
     QJsonArray edges = request["edges"].toArray();
     int vertices = request["vertices"].toInt();
+    int start = request["start"].toInt();
+    int end = request["end"].toInt();
 
-    bool result = GraphFunctions::isBipartiteGraph(edges, vertices);
-
-    QJsonObject response;
-    response["action"] = "bipartite_graph_result";
-    response["is_bipartite"] = result;
-    response["message"] = result ? "Graph is bipartite" : "Graph is NOT bipartite";
-
-    sendResponse(client, response);
+    QJsonObject result = GraphFunctions::task4_HasPath(edges, vertices, start, end);
+    sendResponse(client, result);
 }
 
 void Server::onDisconnected()
