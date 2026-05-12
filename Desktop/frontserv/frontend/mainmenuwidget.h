@@ -19,11 +19,13 @@ public:
 
 signals:
     void logoutRequested();
+    void loginSuccess(const QString &username, const QString &role);
 
 private slots:
-    void onMatrixClick();
-    void onRelaxationClick();
-    void onBipartiteClick();
+    void onTask1Clicked();
+    void onTask2Clicked();
+    void onTask3Clicked();
+    void onTask4Clicked();
     void onResponseReceived(const QJsonObject &response);
     void onLogoutClick();
 

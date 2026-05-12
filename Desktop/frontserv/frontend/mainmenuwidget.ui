@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>900</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Main Menu</string>
+   <string>Graph Analysis System</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_main">
    <item>
     <layout class="QHBoxLayout" name="topBar">
      <item>
       <widget class="QLabel" name="userInfoLabel">
        <property name="text">
-        <string>User Info</string>
+        <string>User:</string>
        </property>
       </widget>
      </item>
@@ -50,36 +50,69 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="matrixTab">
+
+     <!-- TAB 1 -->
+     <widget class="QWidget" name="tab_1">
       <attribute name="title">
-       <string>Matrix Identity</string>
+       <string>1. Степени вершин</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_1">
        <item>
-        <widget class="QTableWidget" name="matrixTable">
-         <property name="rowCount">
-          <number>3</number>
-         </property>
-         <property name="columnCount">
-          <number>3</number>
-         </property>
-         <attribute name="horizontalHeaderVisible">
-          <bool>true</bool>
-         </attribute>
-         <attribute name="verticalHeaderVisible">
-          <bool>true</bool>
-         </attribute>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_1">
+         <item>
+          <widget class="QLabel" name="label_vertices">
+           <property name="text">
+            <string>Вершин:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="verticesSpin">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>3</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_edges">
+           <property name="text">
+            <string>Ребер:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="edgesSpin">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>3</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="matrixBtn">
+        <widget class="QTableWidget" name="incidenceTable"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="task1Btn">
          <property name="text">
-          <string>Check Identity Matrix</string>
+          <string>Вычислить степени вершин</string>
          </property>
         </widget>
        </item>
        <item>
-        <spacer name="verticalSpacer">
+        <spacer name="verticalSpacer_1">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -93,43 +126,61 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="relaxationTab">
+
+     <!-- TAB 2 -->
+     <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>Relaxation Graph</string>
+       <string>2. Релаксация ребра</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Number of vertices:</string>
-         </property>
-        </widget>
+        <layout class="QFormLayout" name="formLayout_2">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_currentDist">
+           <property name="text">
+            <string>Текущее расстояние:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="currentDistSpin">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>999</number>
+           </property>
+           <property name="value">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_edgeWeight">
+           <property name="text">
+            <string>Вес ребра:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="edgeWeightSpin">
+           <property name="minimum">
+            <number>-100</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="value">
+            <number>5</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QLineEdit" name="verticesInput">
+        <widget class="QPushButton" name="task2Btn">
          <property name="text">
-          <string>4</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Edges (JSON format):</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QTextEdit" name="edgesInput">
-         <property name="placeholderText">
-          <string>[[0,1],[1,2],[2,3]]</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="relaxationBtn">
-         <property name="text">
-          <string>Check Relaxation Graph</string>
+          <string>Выполнить релаксацию</string>
          </property>
         </widget>
        </item>
@@ -148,43 +199,58 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="bipartiteTab">
+
+     <!-- TAB 3 -->
+     <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>Bipartite Graph</string>
+       <string>3. Двудольный граф</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Number of vertices:</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_bVertices">
+           <property name="text">
+            <string>Вершин:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="bVerticesSpin">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>20</number>
+           </property>
+           <property name="value">
+            <number>4</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QLineEdit" name="bVerticesInput">
+        <widget class="QLabel" name="label_bEdges">
          <property name="text">
-          <string>4</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Edges (JSON format):</string>
+          <string>Ребра (JSON):</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QTextEdit" name="bEdgesInput">
          <property name="placeholderText">
-          <string>[[0,1],[1,2],[2,3]]</string>
+          <string>[[0,1],[1,2],[2,3],[3,0]]</string>
+         </property>
+         <property name="plainText">
+          <string>[[0,1],[1,2],[2,3],[3,0]]</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="bipartiteBtn">
+        <widget class="QPushButton" name="task3Btn">
          <property name="text">
-          <string>Check Bipartite Graph</string>
+          <string>Разбить на доли</string>
          </property>
         </widget>
        </item>
@@ -203,14 +269,124 @@
        </item>
       </layout>
      </widget>
+
+     <!-- TAB 4 -->
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>4. Поиск пути</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_pathVertices">
+           <property name="text">
+            <string>Вершин:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="pathVerticesSpin">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>20</number>
+           </property>
+           <property name="value">
+            <number>4</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_start">
+           <property name="text">
+            <string>Начало:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="startVertexSpin">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>19</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_end">
+           <property name="text">
+            <string>Конец:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="endVertexSpin">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>19</number>
+           </property>
+           <property name="value">
+            <number>3</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_pathEdges">
+         <property name="text">
+          <string>Ребра (JSON):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="pathEdgesInput">
+         <property name="placeholderText">
+          <string>[[0,1],[1,2],[2,3]]</string>
+         </property>
+         <property name="plainText">
+          <string>[[0,1],[1,2],[2,3]]</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="task4Btn">
+         <property name="text">
+          <string>Проверить существование пути</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>
     <widget class="QGroupBox" name="outputGroup">
      <property name="title">
-      <string>Output</string>
+      <string>Результаты</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
+     <layout class="QVBoxLayout" name="verticalLayout_output">
       <item>
        <widget class="QTextEdit" name="outputEdit">
         <property name="readOnly">

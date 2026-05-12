@@ -15,7 +15,7 @@ set(SOURCES
     registerwidget.cpp
     mainmenuwidget.cpp
     clientapi.cpp
-    functions.cpp
+
 )
 
 set(HEADERS
@@ -24,7 +24,7 @@ set(HEADERS
     registerwidget.h
     mainmenuwidget.h
     clientapi.h
-    functions.h
+
 )
 
 set(FORMS
