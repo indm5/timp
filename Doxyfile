@@ -1,0 +1,48 @@
+# название проекта
+PROJECT_NAME = "Graph Analysis Server"
+
+# папка для документации
+OUTPUT_DIRECTORY = docs
+
+# язык (русский интерфейс)
+OUTPUT_LANGUAGE = Russian
+
+# кодировка (utf-8 для qt)
+INPUT_ENCODING = UTF-8
+
+# какие файлы сканировать (текущая папка)
+INPUT = ./
+
+# какие расширения обрабатывать
+FILE_PATTERNS = *.cpp *.h
+
+# заходить в подпапки
+RECURSIVE = YES
+
+# показывать всё (даже без комментариев)
+EXTRACT_ALL = YES
+
+# показывать private методы
+EXTRACT_PRIVATE = YES
+
+# показывать статические методы
+EXTRACT_STATIC = YES
+
+# генерировать html
+GENERATE_HTML = YES
+
+# включить поиск
+SEARCHENGINE = YES
+
+# отключить latex (не нужен pdf)
+GENERATE_LATEX = NO
+
+# показывать исходный код
+SOURCE_BROWSER = YES
+
+# показывать код прямо в документации
+INLINE_SOURCES = YES
+
+# отключить предупреждения
+QUIET = YES
+WARNINGS = NO
