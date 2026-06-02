@@ -35,3 +35,8 @@ EXPOSE 12345
 
 # Команда запуска сервера при старте контейнера
 CMD ["./Server"]
+
+#docker build -t graph-server . - создание образа
+#docker run -d -p 12345:12345 --name graph-server-container graph-server - создание контейнера
+
+
